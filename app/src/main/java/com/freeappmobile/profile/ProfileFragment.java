@@ -112,11 +112,7 @@ public class ProfileFragment extends BaseFragment {
 
         switch (view.getId())
         {
-            case R.id.back_btn:
 
-                Intent intent =new Intent(mActivity, HomeActivity.class);
-                startActivity(intent);
-                break;
         }
     }
 }

@@ -33,7 +33,8 @@ public class HomeActivity extends BaseActivity {
         setClick(R.id.rr_profile);
         setClick(R.id.rr_transaction);
 
-        openFragment(0);
+        int fragmentNumber = getIntent().getIntExtra("fragmentNumber", 0);
+        openFragment(fragmentNumber);
     }
 
 
@@ -50,14 +51,12 @@ public class HomeActivity extends BaseActivity {
 
             case 1:
                 setHeader("Transactions");
-                setLeftClick();
                 show(false, true, false);
                 fragment = TransactionFragment.newInstance();
                 break;
 
             case 2:
                 setHeader("User Profile");
-                setLeftClick();
                 show(false, false, true);
                 fragment = ProfileFragment.newInstance();
                 break;

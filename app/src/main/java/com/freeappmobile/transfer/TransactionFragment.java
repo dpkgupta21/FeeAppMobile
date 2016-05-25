@@ -131,10 +131,7 @@ public class TransactionFragment extends BaseFragment {
                 listViewFrequentTransactions.setVisibility(View.VISIBLE);
                 mRecyclerView.setVisibility(View.GONE);
                 break;
-            case R.id.back_btn:
-                Intent intent = new Intent(mActivity, HomeActivity.class);
-                startActivity(intent);
-                break;
+
         }
     }
 

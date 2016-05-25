@@ -24,6 +24,7 @@ import com.android.volley.VolleyError;
 import com.freeappmobile.AppController;
 import com.freeappmobile.R;
 import com.freeappmobile.custom.CustomProgressDialog;
+import com.freeappmobile.home.HomeActivity;
 import com.freeappmobile.model.FeeDurationDTO;
 import com.freeappmobile.model.FeeStructureDTO;
 import com.freeappmobile.model.PaymentDTO;
@@ -103,7 +104,7 @@ public class FeeStructureActivity extends BaseActivity implements FetchPopUpSele
             setViewVisibility(R.id.txt_phone_number, View.VISIBLE);
             setViewVisibility(R.id.txt_phone_change, View.VISIBLE);
             setViewVisibility(R.id.et_phone_number, View.GONE);
-            setTextViewText(R.id.txt_phone_number, FeeAppPreferences.getPhoneNumber(mActivity));
+            setTextViewText(R.id.txt_phone_number, "+91 - "+FeeAppPreferences.getPhoneNumber(mActivity));
 
         } else {
             setViewVisibility(R.id.txt_phone_number, View.GONE);
@@ -113,7 +114,7 @@ public class FeeStructureActivity extends BaseActivity implements FetchPopUpSele
 
 
         editText = (EditText) findViewById(R.id.et_phone_number);
-        editText.setText("+91 - ");
+        editText.setText("+91 - " + FeeAppPreferences.getPhoneNumber(mActivity));
         Selection.setSelection(editText.getText(), editText.getText().length());
         editText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -130,7 +131,7 @@ public class FeeStructureActivity extends BaseActivity implements FetchPopUpSele
             public void afterTextChanged(Editable s) {
 
                 if (!s.toString().contains("+91 - ")) {
-                    editText.setText("+91 - ");
+                    editText.setText("+91 - " + FeeAppPreferences.getPhoneNumber(mActivity));
                     Selection.setSelection(editText.getText(), editText.getText().length());
 
                 }
@@ -301,7 +302,7 @@ public class FeeStructureActivity extends BaseActivity implements FetchPopUpSele
 //        totalTxtView.setTextAppearance(mActivity, R.style.txt_black_color);
 //        totalTxtView.setText(feeStructureDTO.getTotal_fee());
 
-        RelativeLayout relativeLayout=new RelativeLayout(mActivity);
+        RelativeLayout relativeLayout = new RelativeLayout(mActivity);
         RelativeLayout.LayoutParams relativeLayoutParams = new RelativeLayout.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT
         );
@@ -463,7 +464,7 @@ public class FeeStructureActivity extends BaseActivity implements FetchPopUpSele
         if (getEditTextText(R.id.email_id).equals("") && FeeAppPreferences.getEmailId(mActivity).equals("")) {
             Utils.showDialog(mActivity, "Error", "Please enter email id.");
             return false;
-        } else if (getEditTextText(R.id.et_phone_number).length()<16 && FeeAppPreferences.getPhoneNumber(mActivity).equals("")) {
+        } else if (getEditTextText(R.id.et_phone_number).length() < 16 && FeeAppPreferences.getPhoneNumber(mActivity).equals("")) {
             Utils.showDialog(mActivity, "Error", "Please enter phone number");
             return false;
         }
@@ -486,7 +487,10 @@ public class FeeStructureActivity extends BaseActivity implements FetchPopUpSele
 
                                 if (Utils.getWebServiceStatus(response)) {
 
-                                    Toast.makeText(mActivity, "Payment done successfully.", Toast.LENGTH_LONG).show();
+                                    Intent intent = new Intent(mActivity, HomeActivity.class);
+                                    intent.putExtra("fragmentNumber", 1);
+                                    startActivity(intent);
+                                    // Toast.makeText(mActivity, "Payment done successfully.", Toast.LENGTH_LONG).show();
                                 } else {
 
                                     Utils.showDialog(mActivity, "Error", Utils.getWebServiceMessage(response));
