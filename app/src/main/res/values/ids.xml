@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="txt_tatal_val" type="id" />
+    <item name="txt_total_col" type="id" />
+    <item name="txt_second" type="id" />
+    <item name="txt_con_col" type="id" />
+    <item name="txt_con_val" type="id" />
+    <item name="txt_con" type="id" />
+</resources>

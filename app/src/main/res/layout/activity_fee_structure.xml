@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.freeappmobile.student.FeeStructureActivity">
+
+    <LinearLayout
+        android:id="@+id/toolbar_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_20"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/txt_student_name"
+                        style="@style/txt_btn_bg_color_bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:text="Dhara's Fees" />
+
+
+                    <TextView
+                        android:id="@+id/txt_student_id"
+                        style="@style/txt_black_color_bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_5dp"
+                        android:layout_toRightOf="@+id/txt_student_name"
+                        android:text="(ID : 328473297443)" />
+
+
+                </RelativeLayout>
+
+
+                <TextView
+                    android:id="@+id/txt_class_school"
+                    style="@style/txt_black_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Class 7th A, Baroda High School Alkapuri" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_5dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/institute_fees_line" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_20"
+                android:orientation="vertical">
+
+                <RelativeLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/txt_tenure"
+                        style="@style/txt_black_color"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:drawableLeft="@drawable/fee_tenure_icon"
+                        android:drawablePadding="@dimen/margin_10dp"
+                        android:paddingLeft="@dimen/margin_10dp"
+                        android:text="@string/txt_fee_tenure" />
+
+                    <TextView
+                        android:id="@+id/txt_fee_tenure_type"
+                        style="@style/txt_black_color_bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_5dp"
+                        android:layout_toRightOf="@+id/txt_tenure"
+                        android:text="Yearly" />
+
+                    <TextView
+                        android:id="@+id/txt_change"
+                        style="@style/txt_btn_bg_color_bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="@string/txt_change" />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/margin_5dp"
+                    android:background="@color/btn_bg"></View>
+
+            </LinearLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_20">
+
+
+                <TextView
+                    style="@style/txt_black_color"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:text="@string/txt_monthly" />
+
+                <LinearLayout
+                    android:id="@+id/linear_fee_ll"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:gravity="right"
+                    android:orientation="vertical">
+
+
+
+                </LinearLayout>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_40"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+
+                        <EditText
+                            android:id="@+id/email_id"
+                            style="@style/et_home"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableLeft="@drawable/mail_icon"
+                            android:hint="@string/hint_enter_email"
+                            android:singleLine="true" />
+
+                        <TextView
+                            android:id="@+id/txt_email_id"
+                            style="@style/txt_black_color_bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawableLeft="@drawable/mail_icon"
+                            android:drawablePadding="@dimen/margin_10dp"
+                            android:paddingLeft="@dimen/margin_10dp"
+                            android:text="+91 - 9099942892"
+                            android:visibility="gone" />
+
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/txt_email_change"
+                        style="@style/txt_btn_bg_color_bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_10dp"
+                        android:text="@string/txt_change"
+                        android:visibility="gone" />
+
+                </LinearLayout>
+
+                <TextView
+                    style="@style/txt_btn_bg_color"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_5dp"
+                    android:text="@string/txt_your_receipt"
+                    android:textSize="@dimen/txt_size_12" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_20"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/txt_phone_number"
+                            style="@style/txt_black_color_bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawableLeft="@drawable/mobile_icon"
+                            android:drawablePadding="@dimen/margin_10dp"
+                            android:paddingLeft="@dimen/margin_10dp"
+                            android:text="+91 - 9099942892"
+                            android:visibility="gone" />
+
+                        <EditText
+                            android:id="@+id/et_phone_number"
+                            style="@style/et_home"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableLeft="@drawable/mobile_icon"
+                            android:hint="Enter Phone Number"
+                            android:inputType="phone"
+                            android:maxLength="16"
+                            android:singleLine="true" />
+
+
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/txt_phone_change"
+                        style="@style/txt_btn_bg_color_bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_10dp"
+                        android:text="@string/txt_change"
+                        android:visibility="gone" />
+
+                </LinearLayout>
+
+                <TextView
+                    style="@style/txt_btn_bg_color"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_5dp"
+                    android:text="@string/txt_payment_confirmation"
+                    android:textSize="@dimen/txt_size_12" />
+
+
+            </LinearLayout>
+
+
+            <Button
+                android:id="@+id/btn_proceed_pay"
+                style="@style/btnStyleProceed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_20"
+                android:text="@string/btn_txt_proceed_to_pay" />
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

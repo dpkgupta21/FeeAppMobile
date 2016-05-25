@@ -1,0 +1,159 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_color"
+    tools:context="com.freeappmobile.home.HomeFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:weightSum="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="@dimen/margin_10dp"
+                android:layout_weight=".5"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/txt_institute"
+                            style="@style/txt_black_color_bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/txt_institute" />
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_5dp"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/institute_fees_line" />
+                    </LinearLayout>
+
+
+                    <TextView
+                        android:id="@+id/txt_save_student"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:background="@drawable/btn_bg_repeat"
+                        android:drawableLeft="@drawable/saved_students"
+                        android:drawablePadding="@dimen/margin_5dp"
+                        android:padding="@dimen/margin_5dp"
+                        android:text="@string/txt_save_student"
+                        android:textColor="@color/btn_bg" />
+
+
+                </RelativeLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_20"
+                    android:orientation="vertical">
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <AutoCompleteTextView
+                            android:id="@+id/txt_location"
+                            style="@style/txt_btn_bg_color"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:singleLine="true"
+                            android:background="@android:color/transparent"
+                            android:drawableLeft="@drawable/location_icon"
+                            android:drawablePadding="@dimen/margin_10dp"
+                            android:paddingLeft="@dimen/margin_10dp" />
+
+                        <TextView
+                            android:id="@+id/txt_change_city"
+                            style="@style/txt_btn_bg_color_bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:text="@string/txt_change" />
+                    </RelativeLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="@dimen/margin_10dp"
+                        android:background="@color/btn_bg"></View>
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:id="@+id/txt_institute_name"
+                    style="@style/et_home"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_20"
+                    android:singleLine="true"
+                    android:drawableLeft="@drawable/select_institute"
+                    android:hint="@string/hint_institute"
+                    android:textColorHint="@color/btn_bg" />
+
+                <Button
+                    android:id="@+id/btn_proceed"
+                    style="@style/btnStyleProceed"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/margin_20"
+                    android:text="@string/btn_txt_proceed" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/ll_frequent"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight=".5"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/txt_black_color_bold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/txt_bg"
+                    android:padding="@dimen/margin_15dp"
+                    android:text="@string/txt_frequent_transaction" />
+
+                <ListView
+                    android:id="@+id/list_view_frequent_transaction"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"></ListView>
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>
