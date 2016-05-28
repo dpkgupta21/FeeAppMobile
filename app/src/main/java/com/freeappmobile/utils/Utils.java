@@ -354,7 +354,8 @@ public class Utils {
 
 
     public static String getTransactions(String deviceId, String mobileNumber, String type) {
-        String url = Constant.BASE_URL + Constant.GET_TRANSACTIONS + "?token=" + Constant.TOKEN + "&device_id=" + deviceId + "&mobile_no=" + mobileNumber + "&type=" + type;
+        String url = Constant.BASE_URL + Constant.GET_TRANSACTIONS + "?token=" + Constant.TOKEN +
+                "&device_id=" + deviceId + "&mobile_no=" + mobileNumber + "&type=" + type;
         return url;
     }
 

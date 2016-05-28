@@ -62,6 +62,8 @@ public class FeeStructureActivity extends BaseActivity implements FetchPopUpSele
     private String studentClass;
     private String instituteName;
 
+    private FeeStructureDTO feeStructureDTO;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -195,7 +197,7 @@ public class FeeStructureActivity extends BaseActivity implements FetchPopUpSele
 
             case R.id.btn_proceed_pay:
 
-                 doTxn();
+                doTxn();
 
 //                Utils.hideKeyboard((Activity) mActivity);
 //                if (validateForm()) {
@@ -237,7 +239,7 @@ public class FeeStructureActivity extends BaseActivity implements FetchPopUpSele
                             try {
 
 
-                                FeeStructureDTO feeStructureDTO = new Gson().fromJson(response.getJSONObject("results").toString(), FeeStructureDTO.class);
+                                feeStructureDTO = new Gson().fromJson(response.getJSONObject("results").toString(), FeeStructureDTO.class);
 
                                 setValues(feeStructureDTO);
 
@@ -427,7 +429,9 @@ public class FeeStructureActivity extends BaseActivity implements FetchPopUpSele
             params.put("fees_type", slug);
             params.put("save_student", saveStudent);
 
-            CustomJsonRequest postReq = new CustomJsonRequest(Request.Method.POST, Constant.BASE_URL + Constant.MAKE_PAYMENT + "?token=" + Constant.TOKEN, params,
+            CustomJsonRequest postReq = new CustomJsonRequest(Request.Method.POST,
+                    Constant.BASE_URL + Constant.MAKE_PAYMENT + "?token=" + Constant.TOKEN,
+                    params,
                     new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {
@@ -487,7 +491,12 @@ public class FeeStructureActivity extends BaseActivity implements FetchPopUpSele
         if (Utils.isOnline(mActivity)) {
 
             CustomProgressDialog.showProgDialog((Activity) mActivity, null);
-            CustomJsonRequest postReq = new CustomJsonRequest(Request.Method.GET, Utils.getTransactionDetails(FeeAppPreferences.getUDID(mActivity), FeeAppPreferences.getPhoneNumber(mActivity), paymentDTO.getTxn_id(), paymentDTO.getInvoice_id()), null,
+            CustomJsonRequest postReq = new CustomJsonRequest(Request.Method.GET,
+                    Utils.getTransactionDetails(FeeAppPreferences.getUDID(mActivity),
+                            FeeAppPreferences.getPhoneNumber(mActivity),
+                            paymentDTO.getTxn_id(),
+                            paymentDTO.getInvoice_id()),
+                    null,
                     new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {
@@ -535,7 +544,7 @@ public class FeeStructureActivity extends BaseActivity implements FetchPopUpSele
 
         SampleCallBack callbackObj = new SampleCallBack(); //callback instance
 
-        String msg = Utils.getMsg("1", Utils.randomTxnNumber(mActivity));
+        String msg = Utils.getMsg(feeStructureDTO.getTotal_fee(), Utils.randomTxnNumber(mActivity));
         Intent intent = new Intent(mActivity, PaymentOptions.class);
         intent.putExtra("msg", msg); //pg_msg
         intent.putExtra("user-email", "nickygupta02@gmail.com");
