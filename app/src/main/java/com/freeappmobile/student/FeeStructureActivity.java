@@ -190,6 +190,8 @@ public class FeeStructureActivity extends BaseActivity implements FetchPopUpSele
 
             case R.id.btn_proceed_pay:
 
+                doTxn();
+
                 Utils.hideKeyboard((Activity) mActivity);
                 if (validateForm()) {
                     payment();
@@ -526,14 +528,15 @@ public class FeeStructureActivity extends BaseActivity implements FetchPopUpSele
 
     private void doTxn() {
 
-        String msg = Utils.getMsg(getTextViewText(R.id.txt_tatal_val), Utils.randomTxnNumber(mActivity));
+        SampleCallBack callbackObj = new SampleCallBack(); //callback instance
+
+        String msg = Utils.getMsg("1", Utils.randomTxnNumber(mActivity));
         Intent intent = new Intent(mActivity, PaymentOptions.class);
-//        intent.putExtra("msg", msg); //pg_msg
-//        intent.putExtra("token", strToken);
-//        intent.putExtra("user-email", strEmail);
-//        intent.putExtra("user-mobile", strMobile);
-//        intent.putExtra("callback", callbackObj);
-//        startActivity(intent);
+        intent.putExtra("msg", msg); //pg_msg
+        intent.putExtra("user-email", "nickygupta02@gmail.com");
+        intent.putExtra("user-mobile", "9530299738");
+        intent.putExtra("callback", callbackObj);
+        startActivity(intent);
     }
 
 

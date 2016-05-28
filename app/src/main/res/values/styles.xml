@@ -76,4 +76,12 @@
         <item name="android:background">@color/btn_bg</item>
     </style>
 
+
+    <style name="Theme.BD_Dialog" parent="android:style/Theme.Translucent">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
 </resources>

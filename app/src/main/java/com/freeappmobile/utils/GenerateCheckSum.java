@@ -19,24 +19,23 @@ public class GenerateCheckSum {
     }
 
 
-    private void getCheckSum() {
+    public String getCheckSum() {
 
-        if (CP_MSG != null && CP_MSG.length() > 0)
+        // Token formation for HMAC
+        // Input msg = <MSG>|<CP_MSG>
+        // Output msg = <MSG>|<Checksum>|<CP_MSG>
 
-        {
-            // Token formation for HMAC
-            // Input msg = <MSG>|<CP_MSG>
-            // Output msg = <MSG>|<Checksum>|<CP_MSG>
-
-            String strHMACMsg = msg + "|" + CP_MSG;
+        String strHMACMsg = msg + "|" + CP_MSG;
 
 
-            System.out.println("token:-\t" + msg + "|" + HmacSHA256(strHMACMsg, checksumKey) + "|" + CP_MSG);
-        }
+        System.out.println("token:-\t" + msg + "|" + HmacSHA256(strHMACMsg, checksumKey) + "|" + CP_MSG);
+
+        return HmacSHA256(strHMACMsg, checksumKey);
+
     }
 
 
-    public static String HmacSHA256(String message, String secret) {
+    public String HmacSHA256(String message, String secret) {
         // MessageDigest md = null;
         try {
 
