@@ -21,6 +21,7 @@ import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.billdesk.sdk.PaymentOptions;
 import com.freeappmobile.AppController;
 import com.freeappmobile.R;
 import com.freeappmobile.custom.CustomProgressDialog;
@@ -104,7 +105,7 @@ public class FeeStructureActivity extends BaseActivity implements FetchPopUpSele
             setViewVisibility(R.id.txt_phone_number, View.VISIBLE);
             setViewVisibility(R.id.txt_phone_change, View.VISIBLE);
             setViewVisibility(R.id.et_phone_number, View.GONE);
-            setTextViewText(R.id.txt_phone_number, "+91 - "+FeeAppPreferences.getPhoneNumber(mActivity));
+            setTextViewText(R.id.txt_phone_number, "+91 - " + FeeAppPreferences.getPhoneNumber(mActivity));
 
         } else {
             setViewVisibility(R.id.txt_phone_number, View.GONE);
@@ -521,6 +522,21 @@ public class FeeStructureActivity extends BaseActivity implements FetchPopUpSele
         }
 
     }
+
+
+    private void doTxn() {
+
+        String msg = Utils.getMsg(getTextViewText(R.id.txt_tatal_val), Utils.randomTxnNumber(mActivity));
+        Intent intent = new Intent(mActivity, PaymentOptions.class);
+//        intent.putExtra("msg", msg); //pg_msg
+//        intent.putExtra("token", strToken);
+//        intent.putExtra("user-email", strEmail);
+//        intent.putExtra("user-mobile", strMobile);
+//        intent.putExtra("callback", callbackObj);
+//        startActivity(intent);
+    }
+
+
 }
 
 

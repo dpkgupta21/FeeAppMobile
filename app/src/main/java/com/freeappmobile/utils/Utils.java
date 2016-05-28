@@ -20,7 +20,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -359,6 +361,37 @@ public class Utils {
     public static String getTransactionDetails(String deviceId, String phoneNumber, String txnId, String invoiceId) {
         String url = Constant.BASE_URL + Constant.GET_TRANSACTION_DETAILS + "?token=" + Constant.TOKEN + "&device_id=" + deviceId + "&mobile_no=" + phoneNumber + "&txn_id=" + txnId + "&invoice_id=" + invoiceId;
         return url;
+    }
+
+
+    public static String getMsg(String amount, String txn) {
+        String msg = Constant.MerchantID + "|" + txn + "|NA|" + amount + "|NA|NA|NA|" + Constant.CurrencyType + "|NA|R|" + Constant.securityID + "|NA|NA|F|NA|NA|NA|NA|NA|NA|NA|" + Constant.returnUrl + "|";
+
+        return msg;
+
+    }
+
+
+    public static String getToken() {
+        String token = "";
+        return token;
+    }
+
+
+    public static String randomTxnNumber(Context context) {
+        String textString = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        StringBuilder txnNumber = new StringBuilder(4);
+        Random random = new Random();
+        Calendar cal = Calendar.getInstance();
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+        txnNumber.append((day <= 9 ? "0" + day : day + ""));
+        String str = "";
+        for (int i = 0; i < 4; i++) {
+            str += textString.charAt(random.nextInt(textString.length()));
+        }
+        txnNumber.append(str);
+
+        return txnNumber.toString();
     }
 
 
