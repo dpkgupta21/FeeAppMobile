@@ -80,7 +80,9 @@ public class StudentDetailsActivity extends BaseActivity implements FetchPopUpSe
                 intent.putExtra("userName", getEditTextText(R.id.txt_student_enrollment_number));
                 intent.putExtra("dob", getTextViewText(R.id.txt_student_dob));
                 intent.putExtra("id", schoolDTO.getId());
-                intent.putExtra("studentDTO", studentDTO);
+                intent.putExtra("studentName", studentDTO.getName());
+                intent.putExtra("studentClass", studentDTO.getClass_division());
+                intent.putExtra("instituteName",studentDTO.getInstitute());
                 intent.putExtra("saveStudent", isCheckboxChecked(R.id.chk_save_details) ? "1" : "0");
                 startActivity(intent);
 

@@ -12,6 +12,11 @@ public class TransactionDTO {
     private String institute;
     private String institute_area;
     private String student;
+    private String institute_id;
+    private String fee_type_slug;
+    private String dob;
+    private String username;
+    private String className = "";
 
     public String getTxn_date() {
         return txn_date;
@@ -75,5 +80,45 @@ public class TransactionDTO {
 
     public void setStudent(String student) {
         this.student = student;
+    }
+
+    public String getInstitute_id() {
+        return institute_id;
+    }
+
+    public void setInstitute_id(String institute_id) {
+        this.institute_id = institute_id;
+    }
+
+    public String getFee_type_slug() {
+        return fee_type_slug;
+    }
+
+    public void setFee_type_slug(String fee_type_slug) {
+        this.fee_type_slug = fee_type_slug;
+    }
+
+    public String getDob() {
+        return dob;
+    }
+
+    public void setDob(String dob) {
+        this.dob = dob;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getClassName() {
+        return className;
+    }
+
+    public void setClassName(String className) {
+        this.className = className;
     }
 }

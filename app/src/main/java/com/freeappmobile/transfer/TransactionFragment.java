@@ -25,8 +25,10 @@ import com.freeappmobile.custom.CustomProgressDialog;
 import com.freeappmobile.home.HomeActivity;
 import com.freeappmobile.home.adapter.FrequentTransactionAdapter;
 import com.freeappmobile.model.SaveStudentDTO;
+import com.freeappmobile.model.TransactionDTO;
 import com.freeappmobile.model.TransactionListDTO;
 import com.freeappmobile.preferences.FeeAppPreferences;
+import com.freeappmobile.student.FeeStructureActivity;
 import com.freeappmobile.transfer.adapter.TransactionAdapter;
 import com.freeappmobile.utils.BaseFragment;
 import com.freeappmobile.utils.Utils;
@@ -34,6 +36,8 @@ import com.freeappmobile.volley.CustomJsonRequest;
 import com.google.gson.Gson;
 
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 
 public class TransactionFragment extends BaseFragment {
@@ -45,6 +49,7 @@ public class TransactionFragment extends BaseFragment {
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private ListView listViewFrequentTransactions;
+    private ArrayList<TransactionDTO> transactionList;
 
 
     public TransactionFragment() {
@@ -179,12 +184,13 @@ public class TransactionFragment extends BaseFragment {
 
     private void setData(TransactionListDTO transactionListDTO, String type) {
 
+        transactionList = transactionListDTO.getPayment_details();
 
         if (type.equalsIgnoreCase("all")) {
-            if (transactionListDTO.getPayment_details() != null && transactionListDTO.getPayment_details().size() > 0)
+            if (transactionList != null && transactionList.size() > 0)
 
             {
-                mAdapter = new TransactionAdapter(mActivity, transactionListDTO.getPayment_details());
+                mAdapter = new TransactionAdapter(mActivity, transactionList);
                 mRecyclerView.setAdapter(mAdapter);
 
                 ((TransactionAdapter) mAdapter).setOnItemClickListener(new TransactionAdapter.MyClickListener() {
@@ -192,6 +198,17 @@ public class TransactionFragment extends BaseFragment {
                     public void onItemClick(int position, View v) {
                         switch (v.getId()) {
                             case R.id.txt_repeat:
+
+
+                                Intent intent = new Intent(mActivity, FeeStructureActivity.class);
+                                intent.putExtra("userName", transactionList.get(position).getUsername());
+                                intent.putExtra("dob", transactionList.get(position).getDob());
+                                intent.putExtra("id", transactionList.get(position).getInstitute_id());
+                                intent.putExtra("studentName", transactionList.get(position).getStudent());
+                                intent.putExtra("studentClass", transactionList.get(position).getClassName());
+                                intent.putExtra("instituteName", transactionList.get(position).getInstitute());
+                                intent.putExtra("saveStudent", "1");
+                                startActivity(intent);
 
                                 break;
                         }
@@ -201,11 +218,13 @@ public class TransactionFragment extends BaseFragment {
 
         } else {
 
-            if (transactionListDTO.getPayment_details() != null && transactionListDTO.getPayment_details().size() > 0)
+            if (transactionList != null && transactionList.size() > 0)
 
             {
-                FrequentTransactionAdapter frequentTransactionAdapter = new FrequentTransactionAdapter(mActivity, transactionListDTO.getPayment_details());
+                FrequentTransactionAdapter frequentTransactionAdapter = new FrequentTransactionAdapter(mActivity, transactionList);
                 listViewFrequentTransactions.setAdapter(frequentTransactionAdapter);
+
+
 
             }
         }

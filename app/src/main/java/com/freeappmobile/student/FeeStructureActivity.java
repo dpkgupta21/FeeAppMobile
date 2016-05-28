@@ -51,7 +51,6 @@ import java.util.Map;
 public class FeeStructureActivity extends BaseActivity implements FetchPopUpSelectValue {
 
     private Context mActivity;
-    private StudentDTO studentDTO;
     private ArrayList<FeeDurationDTO> feeDurationList;
     private String id;
     private String userName;
@@ -59,6 +58,10 @@ public class FeeStructureActivity extends BaseActivity implements FetchPopUpSele
     private String slug;
     private String saveStudent;
     private EditText editText;
+    private String studentName;
+    private String studentClass;
+    private String instituteName;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -76,15 +79,17 @@ public class FeeStructureActivity extends BaseActivity implements FetchPopUpSele
         setClick(R.id.txt_phone_change);
         setClick(R.id.btn_proceed_pay);
         setClick(R.id.txt_email_change);
-        studentDTO = (StudentDTO) getIntent().getSerializableExtra("studentDTO");
+        studentName = getIntent().getStringExtra("studentName");
+        studentClass = getIntent().getStringExtra("studentClass");
+        instituteName = getIntent().getStringExtra("instituteName");
         userName = getIntent().getStringExtra("userName");
         dob = getIntent().getStringExtra("dob");
         id = getIntent().getStringExtra("id");
         saveStudent = getIntent().getStringExtra("saveStudent");
         Utils.hideKeyboard((Activity) mActivity);
-        setTextViewText(R.id.txt_student_name, studentDTO.getName());
+        setTextViewText(R.id.txt_student_name, studentName);
         setTextViewText(R.id.txt_student_id, "(ID : " + userName + ")");
-        setTextViewText(R.id.txt_class_school, "Class " + studentDTO.getClass_division() + ", " + studentDTO.getInstitute());
+        setTextViewText(R.id.txt_class_school, "Class " + studentClass + ", " + instituteName);
 
         if (FeeAppPreferences.getEmailId(mActivity) != null && !FeeAppPreferences.getEmailId(mActivity).equals("")) {
 
@@ -190,12 +195,12 @@ public class FeeStructureActivity extends BaseActivity implements FetchPopUpSele
 
             case R.id.btn_proceed_pay:
 
-                doTxn();
+                 doTxn();
 
-                Utils.hideKeyboard((Activity) mActivity);
-                if (validateForm()) {
-                    payment();
-                }
+//                Utils.hideKeyboard((Activity) mActivity);
+//                if (validateForm()) {
+//                    payment();
+//                }
                 break;
 
 
@@ -482,7 +487,7 @@ public class FeeStructureActivity extends BaseActivity implements FetchPopUpSele
         if (Utils.isOnline(mActivity)) {
 
             CustomProgressDialog.showProgDialog((Activity) mActivity, null);
-            CustomJsonRequest postReq = new CustomJsonRequest(Request.Method.GET, Utils.getTransactionDetails(FeeAppPreferences.getUDID(mActivity), FeeAppPreferences.getPhoneNumber(mActivity), paymentDTO.getTxn_id(), "SBVP1605000008"), null,
+            CustomJsonRequest postReq = new CustomJsonRequest(Request.Method.GET, Utils.getTransactionDetails(FeeAppPreferences.getUDID(mActivity), FeeAppPreferences.getPhoneNumber(mActivity), paymentDTO.getTxn_id(), paymentDTO.getInvoice_id()), null,
                     new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {

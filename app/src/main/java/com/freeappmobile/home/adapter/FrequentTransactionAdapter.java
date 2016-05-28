@@ -3,6 +3,7 @@ package com.freeappmobile.home.adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 
 import com.freeappmobile.R;
 import com.freeappmobile.model.TransactionDTO;
+import com.freeappmobile.student.FeeStructureActivity;
 
 import java.util.List;
 
@@ -47,7 +49,7 @@ public class FrequentTransactionAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         View view = convertView;
         ViewHolder holder;
 
@@ -79,6 +81,26 @@ public class FrequentTransactionAdapter extends BaseAdapter {
             holder.txt_name.setText(transactionList.get(position).getStudent());
             holder.txt_price.setText("RS. " + transactionList.get(position).getFees() + "/-");
 
+
+            holder.txt_repeat.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    Intent intent = new Intent(context, FeeStructureActivity.class);
+                    intent.putExtra("userName", transactionList.get(position).getUsername());
+                    intent.putExtra("dob", transactionList.get(position).getDob());
+                    intent.putExtra("id", transactionList.get(position).getInstitute_id());
+                    intent.putExtra("studentName", transactionList.get(position).getStudent());
+                    intent.putExtra("studentClass", transactionList.get(position).getClassName());
+                    intent.putExtra("instituteName", transactionList.get(position).getInstitute());
+                    intent.putExtra("saveStudent", "1");
+                    context.startActivity(intent);
+
+
+                }
+
+
+            });
 
         } catch (Exception e) {
             e.printStackTrace();
