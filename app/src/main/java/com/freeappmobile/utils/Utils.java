@@ -368,12 +368,14 @@ public class Utils {
     public static String getMsg(String amount, String txn) {
 
         String msg = Constant.MerchantID + "|" + txn + "|NA|" + amount + "|NA|NA|NA|" + Constant.CurrencyType + "|NA|R|" + Constant.securityID + "|NA|NA|F|NA|NA|NA|NA|NA|NA|NA|" + Constant.returnUrl;
+        Log.i("MSG", msg);
 
         GenerateCheckSum generateCheckSum = new GenerateCheckSum(msg);
         String checkSum = generateCheckSum.getCheckSum();
 
         msg = msg + "|" + checkSum;
 
+        Log.i("MSG with Checksum", msg);
         return msg;
 
     }
@@ -386,14 +388,14 @@ public class Utils {
 
 
     public static String randomTxnNumber(Context context) {
-        String textString = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        StringBuilder txnNumber = new StringBuilder(4);
+        String textString = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+        StringBuilder txnNumber = new StringBuilder(8);
         Random random = new Random();
         Calendar cal = Calendar.getInstance();
         int day = cal.get(Calendar.DAY_OF_MONTH);
         txnNumber.append((day <= 9 ? "0" + day : day + ""));
         String str = "";
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 8; i++) {
             str += textString.charAt(random.nextInt(textString.length()));
         }
         txnNumber.append(str);
