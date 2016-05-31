@@ -544,7 +544,7 @@ public class FeeStructureActivity extends BaseActivity implements FetchPopUpSele
 
         SampleCallBack callbackObj = new SampleCallBack(); //callback instance
 
-        String msg = Utils.getMsg(feeStructureDTO.getTotal_fee(), Utils.randomTxnNumber(mActivity));
+        String msg = Utils.getMsg("1.0", Utils.randomTxnNumber(mActivity));
         Intent intent = new Intent(mActivity, PaymentOptions.class);
         intent.putExtra("msg", msg); //pg_msg
         intent.putExtra("user-email", FeeAppPreferences.getEmailId(mActivity));

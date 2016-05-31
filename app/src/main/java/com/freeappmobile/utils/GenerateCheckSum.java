@@ -7,9 +7,8 @@ import javax.crypto.spec.SecretKeySpec;
 public class GenerateCheckSum {
 
     private String checksumKey;
-    String id = "bl8spl";
     private String msg;
-    private String CP_MSG = "CP1005!ABCD!12A6FE4478DD83BC927437FEE582A0B826C5439294E0333D6251E2A1E88A42E53E214C6F99CB31493683FF79FED2A2D9!NA!NA!NA";
+    private String CP_MSG = "CP1005!BL8SPL!12A6FE4478DD83BC927437FEE582A0B826C5439294E0333D6251E2A1E88A42E53E214C6F99CB31493683FF79FED2A2D9!NA!NA!NA";
 
 
     GenerateCheckSum(String msg) {
