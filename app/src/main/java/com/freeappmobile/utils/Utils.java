@@ -367,7 +367,9 @@ public class Utils {
 
     public static String getMsg(String amount, String txn) {
 
-        String msg = Constant.MerchantID + "|" + txn + "|NA|" + amount + "|NA|NA|NA|" + Constant.CurrencyType + "|NA|R|" + Constant.securityID + "|NA|NA|F|NA|NA|NA|NA|NA|NA|NA|" + Constant.returnUrl;
+        String msg = Constant.MerchantID + "|" + txn + "|NA|" + amount +
+                "|NA|NA|NA|" + Constant.CurrencyType + "|NA|R|" + Constant.securityID +
+                "|NA|NA|F|NA|NA|NA|NA|NA|NA|NA|" + Constant.returnUrl;
 
         GenerateCheckSum generateCheckSum = new GenerateCheckSum(msg);
         String checkSum = generateCheckSum.getCheckSum();

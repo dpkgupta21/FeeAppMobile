@@ -25,8 +25,9 @@ public class GenerateCheckSum {
         // Input msg = <MSG>|<CP_MSG>
         // Output msg = <MSG>|<Checksum>|<CP_MSG>
 
-        String strHMACMsg = msg + "|" + CP_MSG;
+        // String strHMACMsg = msg + "|" + CP_MSG;
 
+        String strHMACMsg = msg;
 
         System.out.println("token:-\t" + msg + "|" + HmacSHA256(strHMACMsg, checksumKey) + "|" + CP_MSG);
 
