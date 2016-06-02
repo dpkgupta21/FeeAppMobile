@@ -17,11 +17,11 @@ public class Constant {
     public static String GET_TRANSACTIONS = "get-transcations";
     public static String GET_TRANSACTION_DETAILS = "get-transcation-details";
 
-    public static String MerchantID = "BL8SPL";
-    public static String CurrencyType = "INR";
-    public static String securityID = "bl8spl";
-    public static String checkSumId = "oUfEu6e2xBai";
-    public static String returnUrl = "https://online.BlackID.in/response.jsp";
+//    public static String MerchantID = "BL8SPL";
+//    public static String CurrencyType = "INR";
+//    public static String securityID = "bl8spl";
+  public static String checkSumId = "oUfEu6e2xBai";
+//    public static String returnUrl = "https://online.BlackID.in/response.jsp";
 
 
 }

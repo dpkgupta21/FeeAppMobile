@@ -365,43 +365,24 @@ public class Utils {
     }
 
 
-    public static String getMsg(String amount, String txn) {
+    public static String getMsg(String merchantId,String currencyType,String amount, String txn,String securityId,String returnUrl,String checkSum) {
 
-        String msg = Constant.MerchantID + "|" + txn + "|NA|" + amount +
-                "|NA|NA|NA|" + Constant.CurrencyType + "|NA|R|" + Constant.securityID +
-                "|NA|NA|F|NA|NA|NA|NA|NA|NA|NA|" + Constant.returnUrl;
+        String msg = merchantId + "|" + txn + "|NA|" + amount +
+                "|NA|NA|NA|" + currencyType + "|NA|R|" + securityId +
+                "|NA|NA|F|NA|NA|NA|NA|NA|NA|NA|" + returnUrl;
 
         GenerateCheckSum generateCheckSum = new GenerateCheckSum(msg);
-        String checkSum = generateCheckSum.getCheckSum();
+        String checkSum1 = generateCheckSum.getCheckSum();
 
-        msg = msg + "|" + checkSum;
+        msg = msg + "|" + checkSum1;
 
         return msg;
 
     }
 
 
-    public static String getToken() {
-        String token = "";
-        return token;
-    }
 
 
-    public static String randomTxnNumber(Context context) {
-        String textString = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        StringBuilder txnNumber = new StringBuilder(4);
-        Random random = new Random();
-        Calendar cal = Calendar.getInstance();
-        int day = cal.get(Calendar.DAY_OF_MONTH);
-        txnNumber.append((day <= 9 ? "0" + day : day + ""));
-        String str = "";
-        for (int i = 0; i < 4; i++) {
-            str += textString.charAt(random.nextInt(textString.length()));
-        }
-        txnNumber.append(str);
-
-        return txnNumber.toString();
-    }
 
 
 }

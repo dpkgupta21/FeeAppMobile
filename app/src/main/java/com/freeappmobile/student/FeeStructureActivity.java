@@ -61,6 +61,7 @@ public class FeeStructureActivity extends BaseActivity implements FetchPopUpSele
     private String studentName;
     private String studentClass;
     private String instituteName;
+    private PaymentDTO paymentDTO;
 
     private FeeStructureDTO feeStructureDTO;
 
@@ -197,12 +198,11 @@ public class FeeStructureActivity extends BaseActivity implements FetchPopUpSele
 
             case R.id.btn_proceed_pay:
 
-                doTxn();
 
-//                Utils.hideKeyboard((Activity) mActivity);
-//                if (validateForm()) {
-//                    payment();
-//                }
+                Utils.hideKeyboard((Activity) mActivity);
+                if (validateForm()) {
+                    payment();
+                }
                 break;
 
 
@@ -440,8 +440,11 @@ public class FeeStructureActivity extends BaseActivity implements FetchPopUpSele
 
                                     FeeAppPreferences.setEmailId(mActivity, emailID);
                                     FeeAppPreferences.setPhoneNumber(mActivity, phoneNumber);
-                                    PaymentDTO paymentDTO = new Gson().fromJson(response.getJSONObject("results").toString(), PaymentDTO.class);
-                                    callPaymentDetails(paymentDTO);
+
+
+                                    paymentDTO = new Gson().fromJson(response.getJSONObject("results").toString(), PaymentDTO.class);
+                                    doTxn();
+//                                    callPaymentDetails(paymentDTO);
                                 } else {
                                     Utils.customDialog(Utils.getWebServiceMessage(response), mActivity);
                                 }
@@ -544,7 +547,12 @@ public class FeeStructureActivity extends BaseActivity implements FetchPopUpSele
 
         SampleCallBack callbackObj = new SampleCallBack(); //callback instance
 
-        String msg = Utils.getMsg("1.0", Utils.randomTxnNumber(mActivity));
+        String merchantId = paymentDTO.getChecksum().getTXNDATA().getTXNSUMMARY().getPGMERCID();
+        String checkSum = paymentDTO.getChecksum().getCHECKSUM();
+        String pgCustomerId = paymentDTO.getChecksum().getTXNDATA().getTXNSUMMARY().getPGCUSTOMERID();
+        String returnUrl = "http://feeapp.in/check_payment_response.php";
+
+        String msg = Utils.getMsg(merchantId, "INR", "1.0", pgCustomerId, "bl8spl", returnUrl, checkSum);
         Intent intent = new Intent(mActivity, PaymentOptions.class);
         intent.putExtra("msg", msg); //pg_msg
         intent.putExtra("user-email", FeeAppPreferences.getEmailId(mActivity));
